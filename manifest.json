@@ -6,7 +6,9 @@
 	"version": "1.0",
 
 	"icons": {
-		"48": "icons/icon.png"
+		"48": "icons/icon-tamper-48.png",
+		"32": "icons/icon-tamper-32.png",
+		"16": "icons/icon-tamper-16.png"
 	},
 
 	"permissions": [
@@ -21,8 +23,9 @@
 	
 	"browser_action": {
 		"default_icon": {
-			"16": "icons/page-16.png",
-			"32": "icons/page-32.png"
+			"48": "icons/icon-notamper-48.png",
+			"32": "icons/icon-notamper-32.png",
+			"16": "icons/icon-notamper-16.png"
 		}
 	}
 }
