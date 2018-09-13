@@ -1,0 +1,28 @@
+{
+
+	"description": "Modify HTTP requests.",
+	"manifest_version": 2,
+	"name": "Tamper Data for FF Quantum",
+	"version": "1.0",
+
+	"icons": {
+		"48": "icons/icon.png"
+	},
+
+	"permissions": [
+		"webRequest",
+		"webRequestBlocking",
+		"<all_urls>"
+	],
+
+	"background": {
+		"scripts": ["background/td.js"]
+	},
+	
+	"browser_action": {
+		"default_icon": {
+			"16": "icons/page-16.png",
+			"32": "icons/page-32.png"
+		}
+	}
+}
