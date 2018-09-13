@@ -25,6 +25,10 @@ This is a re-write that works in FF 57+, however, the webRequest API doesn't cur
 
 It will automatically uninstall when you close the browser.
 
+### Install from the Official Addons Page
+
+When Mozilla approves the submission it will be available on the official add-ons site, [here](https://addons.mozilla.org/en-US/firefox/addon/tamper-data-for-ff-quantum/).
+
 ### Usage
 
 Once installed you will see a blue cloud button in the toolbar, to the left of the URL bar. Click that to start tampering.

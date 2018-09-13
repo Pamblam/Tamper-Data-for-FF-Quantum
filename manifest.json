@@ -1,10 +1,12 @@
 {
 
-	"description": "Modify HTTP requests.",
+	"description": "Tamper Data for FF Quantum.",
 	"manifest_version": 2,
 	"name": "Tamper Data for FF Quantum",
-	"version": "1.0",
-
+	"author": "Pamblam",
+	"version": "0.1",
+	"short_name": "Tamper Data",
+	
 	"icons": {
 		"48": "icons/icon-tamper-48.png",
 		"32": "icons/icon-tamper-32.png",
@@ -27,5 +29,14 @@
 			"32": "icons/icon-notamper-32.png",
 			"16": "icons/icon-notamper-16.png"
 		}
-	}
+	},
+
+	"developer": {
+		"name": "Pamblam",
+		"url": "http://pamblam.com"
+	},
+	
+	"homepage_url": "https://github.com/Pamblam/Tamper-Data-for-FF-Quantum"
+
+
 }
