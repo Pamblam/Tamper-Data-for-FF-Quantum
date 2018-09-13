@@ -2,8 +2,9 @@
 var data = JSON.parse(decodeURIComponent(window.location.href.split("?")[1]));
 
 document.getElementById("url").value = data.url;
-document.getElementById("method").innerHTML = data.method;
-document.getElementById("type").innerHTML = data.type;
+
+document.getElementById("method").appendChild(document.createTextNode(data.method));
+document.getElementById("type").appendChild(document.createTextNode(data.type));
 
 var norq = document.getElementById('norq');
 var bodytbl = document.getElementById('bodytbl');
@@ -13,7 +14,16 @@ else bodytbl.parentNode.removeChild(bodytbl);
 var tbody = document.getElementById('bodybody');
 data.body.forEach(body=>{
 	var row = document.createElement("tr");
-	row.innerHTML = `<td>${body.name}</td><td><input class='headers' value='${body.value}' readonly=readonly></td>`;
+	var td1 = document.createElement("td");
+	var tn1 = document.createTextNode(body.name);
+	td1.appendChild(tn1);
+	row.appendChild(td1);
+	var td2 = document.createElement("td");
+	var inpt = document.createElement("input");
+	inpt.setAttribute('value', body.value);
+	inpt.setAttribute('readonly', 'readonly');
+	td2.appendChild(inpt);
+	row.appendChild(td2);
 	tbody.appendChild(row);
 });
 

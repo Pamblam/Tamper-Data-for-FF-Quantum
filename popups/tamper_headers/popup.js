@@ -2,13 +2,23 @@
 var data = JSON.parse(decodeURIComponent(window.location.href.split("?")[1]));
 
 document.getElementById("url").value = data.url;
-document.getElementById("method").innerHTML = data.method;
-document.getElementById("type").innerHTML = data.type;
+document.getElementById("method").appendChild(document.createTextNode(data.method));
+document.getElementById("type").appendChild(document.createTextNode(data.type));
 
 var tbody = document.getElementById('headersbody');
 data.headers.forEach(header=>{
 	var row = document.createElement("tr");
-	row.innerHTML = `<td>${header.name}</td><td><input class='headers' value='${header.value}' data-name='${header.name}'></td>`;
+	var td1 = document.createElement("td");
+	var tn1 = document.createTextNode(header.name);
+	td1.appendChild(tn1);
+	row.appendChild(td1);
+	var td2 = document.createElement("td");
+	var inpt = document.createElement("input");
+	inpt.setAttribute('value', header.value);
+	inpt.setAttribute('data-name', header.name);
+	inpt.setAttribute('class', 'headers');
+	td2.appendChild(inpt);
+	row.appendChild(td2);
 	tbody.appendChild(row);
 });
 
