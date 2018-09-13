@@ -9,7 +9,7 @@
 
 Tamper Data no longer works in FF 57+. 
 
-This is a re-write that works in FF 57+, however, the webRequest API doesn't currently support changing request body paramters. There are tickets open, and hopefully Mozilla will fix this soon, but for now this is still very useful for other things:
+This is a re-write that works in FF 57+, however, the webRequest API doesn't currently support changing request body paramters. There are tickets open for both [Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=1491087) and [Chrome](https://bugs.chromium.org/p/chromium/issues/detail?id=91191) so hopefully it will be resolved sooner than later, but for now this is still very useful for other things:
 
  - Monitoring live requests
  - Editing headers on live requests
