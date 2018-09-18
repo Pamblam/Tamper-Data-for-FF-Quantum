@@ -1,4 +1,5 @@
 
+
 <p align="center">
 
 <img src='https://i.imgur.com/qkJvAQO.png'>
@@ -16,7 +17,7 @@ This is a re-write that works in FF 57+, however, the webRequest API doesn't cur
  - Canceling live requests
  - Redirecting live requests
 
-### Installing from source
+### Installing from source (Development)
 
  1) Download and unpack the source code.
  2) Navigate to [about:debugging](about:debugging).
@@ -25,9 +26,9 @@ This is a re-write that works in FF 57+, however, the webRequest API doesn't cur
 
 It will automatically uninstall when you close the browser.
 
-### Install from the Official Addons Page
+### Install from the Official Add-ons Page
 
-When Mozilla approves the submission it will be available on the official add-ons site, [here](https://addons.mozilla.org/en-US/firefox/addon/tamper-data-for-ff-quantum/).
+You can install from the official add-ons page here, [here](https://addons.mozilla.org/en-US/firefox/addon/tamper-data-for-ff-quantum/).
 
 ### Usage
 

@@ -86,8 +86,10 @@ function user_confirm_tamper(){
 		}).then(w=>{
 			msgHandler = msg=>{
 				types = msg.types;
-				done(msg);
-				browser.windows.remove(w.id);
+				browser.windows.getCurrent().then(wi=>{
+					browser.windows.remove(wi.id);
+					done(msg);
+				});
 			};
 		});
 	});
@@ -103,8 +105,10 @@ function user_modify_headers(data){
 			allowScriptsToClose: true
 		}).then(w=>{
 			msgHandler = msg=>{
-				done(msg);
-				browser.windows.remove(w.id);
+				browser.windows.getCurrent().then(wi=>{
+					browser.windows.remove(wi.id);
+					done(msg);
+				});
 			};
 		});
 	});
@@ -120,8 +124,10 @@ function user_modify_body(data){
 			allowScriptsToClose: true
 		}).then(w=>{
 			msgHandler = msg=>{
-				done(msg);
-				browser.windows.remove(w.id);
+				browser.windows.getCurrent().then(wi=>{
+					browser.windows.remove(wi.id);
+					done(msg);
+				});
 			};
 		});
 	});
