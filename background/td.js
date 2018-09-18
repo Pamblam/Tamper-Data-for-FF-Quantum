@@ -2,6 +2,7 @@
 var isTampering = false;
 var windowopen = false;
 var types = [];
+var pattern = false;
 
 var msgHandler = ()=>{};
 function handleMessage(msg){
@@ -9,8 +10,9 @@ function handleMessage(msg){
 }
 
 function tamper_header_listener(e) {
-	if((e.originUrl || "").indexOf("moz-extension://") === 0) return;
-	if(!~types.indexOf(e.type)) return;
+	if((e.originUrl || "").indexOf("moz-extension://") === 0) return e;
+	if(!~types.indexOf(e.type)) return e;
+	if(pattern && null === e.url.match(RegExp(pattern, "g"))) return e;
 	return new Promise(done=>{
 		var data = {
 			method: e.method,
@@ -25,14 +27,16 @@ function tamper_header_listener(e) {
 			});
 		});
 		user_modify_headers(data).then(res=>{
+			if(res.stop) stop_tampering();
 			done({requestHeaders: res.headers});
 		});
 	});
 }
 
-function tamper_request_listener(e){ 
-	if((e.originUrl || "").indexOf("moz-extension://") === 0) return;
-	if(!~types.indexOf(e.type)) return;
+function tamper_request_listener(e){
+	if((e.originUrl || "").indexOf("moz-extension://") === 0) return e;
+	if(!~types.indexOf(e.type)) return e;
+	if(pattern && null === e.url.match(RegExp(pattern, "g"))) return e;
 	return new Promise(done=>{
 		var body = [];
 		if(e.requestBody && e.requestBody.formData){
@@ -47,9 +51,10 @@ function tamper_request_listener(e){
 			body: body
 		};
 		user_modify_body(data).then(res=>{
+			if(res.stop) stop_tampering();
 			if(res.cancel) return done({cancel: true});
 			if(res.redirect) return done({redirectUrl: res.redirect});
-			done();
+			done(e);
 		});
 	});
 }
@@ -80,12 +85,13 @@ function user_confirm_tamper(){
 		browser.windows.create({
 			url: "popups/confirm_tamper/popup.html",
 			type: "panel",
-			width: 250,
-			height: 400,
+			width: 1200,
+			height: 800,
 			allowScriptsToClose: true
 		}).then(w=>{
 			msgHandler = msg=>{
 				types = msg.types;
+				pattern = msg.pattern;
 				browser.windows.getCurrent().then(wi=>{
 					browser.windows.remove(wi.id);
 					done(msg);

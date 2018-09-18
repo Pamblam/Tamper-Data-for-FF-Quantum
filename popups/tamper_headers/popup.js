@@ -35,6 +35,20 @@ document.getElementById('ok').onclick = function(){
 	});
 };
 
+document.getElementById('stop').onclick = function(){
+	var headers = [];
+	Array.from(document.querySelectorAll(".headers")).forEach(inp=>{
+		headers.push({
+			name: inp.getAttribute('data-name'),
+			value: inp.value
+		});
+	});
+	browser.runtime.sendMessage({
+		headers: headers,
+		stop: true
+	});
+};
+
 function firefox57_workaround_for_blank_panel() {
 	browser.windows.getCurrent().then((currentWindow) => {
 		browser.windows.update(currentWindow.id, {

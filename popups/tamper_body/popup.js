@@ -35,6 +35,15 @@ document.getElementById('ok').onclick = function(){
 	});
 };
 
+document.getElementById('stop').onclick = function(){
+	var url = document.getElementById("url").value;
+	browser.runtime.sendMessage({
+		cancel: false,
+		stop: true,
+		redirect: data.url != url ? url : false
+	});
+};
+
 document.getElementById('cancel').onclick = function(){
 	browser.runtime.sendMessage({
 		cancel: true

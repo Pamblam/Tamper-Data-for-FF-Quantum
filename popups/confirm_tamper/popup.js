@@ -9,7 +9,8 @@ function respond(r) {
 	});
 	browser.runtime.sendMessage({
 		tamper: r,
-		types: types
+		types: types,
+		pattern: document.getElementById("matchregex").value
 	});
 }
 
