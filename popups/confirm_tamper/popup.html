@@ -32,13 +32,13 @@ and open the template in the editor.
 					<tr v-for="item in table_items">
 						<th scope="row">
 							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="{{item.type}}CheckBox">
+								<input class="form-check-input" type="checkbox" value="" v-bind:id="item.type + 'CheckBox'">
 								<label class="form-check-label" for="defaultCheck1">
 									{{ item.type }}
 								</label>
 							</div>
 						</th>
-						<td> {{ item.description }} </td>
+						<td v-html="item.description"></td>
 					</tr>
 				</tbody>
 			</table>
