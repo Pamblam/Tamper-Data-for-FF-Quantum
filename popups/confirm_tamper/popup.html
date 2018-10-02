@@ -10,16 +10,37 @@ and open the template in the editor.
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-		<!-- development version, includes helpful console warnings -->
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<!-- Vue.js -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	<body>
-			<div id="app">
-					<li v-for="item in table_items">
-						{{ item.type }} {{ item.description }} 
-					</li>
-			</div>
+		<div class="container" id="app">
+			<h3 class="text-center">Listen for types</h3>
+
+			<table class="table table-striped table-blue">
+				<thead>
+					<tr>
+					<th scope="col">Type</th>
+					<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="item in table_items">
+						<th scope="row">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="{{item.type}}CheckBox">
+								<label class="form-check-label" for="defaultCheck1">
+									{{ item.type }}
+								</label>
+							</div>
+						</th>
+						<td> {{ item.description }} </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
 			<hr>
 			<label>Tamper with requests who's URL matches: <input value='(.*?)' id='matchregex'> </label>
