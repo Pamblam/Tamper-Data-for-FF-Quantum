@@ -1,0 +1,12 @@
+body {
+    margin: 10px;
+}
+
+.table thead {
+    margin: 10px;
+    background-color: #4fd6d6;
+}
+
+.buttons {
+    float:right;
+}

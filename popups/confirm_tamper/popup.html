@@ -10,193 +10,68 @@ and open the template in the editor.
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<!-- CSS -->
+		<link rel="stylesheet" href="./popup.css">
+		<!-- Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	<body>
-		<center>
-			<p>Listen for types</p>
-			<table class='paleBlueRows'>
+		<div class="container" id="app">
+			<h3 class="text-center">Listen for types</h3>
+
+			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>Type</th><th>Description</th>
+					<th scope="col">Type</th>
+					<th scope="col">Description</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="beacon">&nbsp;beacon</label>
-						</td><td>
-							Requests sent through the Beacon API.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="csp_report">&nbsp;csp_report</label>
-						</td>
-						<td>
-							Requests sent to the report-uri given in the Content-Security-Policy header, when an attempt to violate the policy is detected.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="font">&nbsp;font</label>
-						</td>
-						<td>
-							Web fonts loaded for a @font-face CSS rule.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="image">&nbsp;image</label>
-						</td>
-						<td>
-							Resources loaded to be rendered as image, except for imageset on browsers that support that type.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="imageset">&nbsp;imageset</label>
-						</td>
-						<td>
-							Images loaded by a <code>&lt;picture></code> element or given in an <code>&lt;img></code> element's <code>srcset</code> attribute.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="main_frame" checked>&nbsp;main_frame</label>
-						</td>
-						<td>
-							Top-level documents loaded into a tab.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="media">&nbsp;media</label>
-						</td>
-						<td>
-							Resources loaded by a <code>&lt;video></code> or <code>&lt;audio></code> element.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="object">&nbsp;object</label>
-						</td>
-						<td>
-							Resources loaded by an <code>&lt;object></code> or <code>&lt;embed></code> element.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="object_subrequest">&nbsp;object_subrequest</label>
-						</td>
-						<td>
-							Requests sent by plugins.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="ping">&nbsp;ping</label>
-						</td>
-						<td>
-							Requests sent to the URL given in a hyperlink's ping attribute, when the hypelink is followed.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="script">&nbsp;script</label>
-						</td>
-						<td>
-							Code that is loaded to be executed by a <code>&lt;script></code> element or running in a Worker.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="speculative">&nbsp;speculative</label>
-						</td>
-						<td>
-							A TCP/TLS handshake made by the browser when it determines it will need the connection open soon.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="stylesheet">&nbsp;stylesheet</label><br>
-						</td>
-						<td>
-							CSS stylesheets loaded to describe the representation of a document.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="sub_frame">&nbsp;sub_frame</label>
-						</td>
-						<td>
-							Documents loaded into an <code>&lt;iframe></code> or <code>&lt;frame></code> element.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="web_manifest">&nbsp;web_manifest</label>
-						</td>
-						<td>
-							Web App Manifests loaded for websites that can be installed to the homescreen.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="websocket">&nbsp;websocket</label>
-						</td>
-						<td>
-							Requests initiating a connection to a server through the WebSocket API.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="xbl">&nbsp;xbl</label><br>
-						</td>
-						<td>
-							XBL bindings loaded to extend the behavior of elements in a document.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="xml_dtd">&nbsp;xml_dtd</label>
-						</td>
-						<td>
-							DTDs loaded for an XML document.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="xmlhttprequest" checked>&nbsp;xmlhttprequest</label>
-						</td>
-						<td>
-							Requests sent by an XMLHttpRequest object or through the Fetch API.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="xslt">&nbsp;xslt</label>
-						</td>
-						<td>
-							XSLT stylesheets loaded for transforming an XML document.
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label><input class='types' type="checkbox" value="other">&nbsp;other</label>
-						</td>
-						<td>
-							Resources that aren't covered by any other available type.
-						</td>
+					<tr v-for="item in table_items">
+						<th scope="row">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" v-bind:id="item.type + 'CheckBox'">
+								<label class="form-check-label" for="defaultCheck1">
+									{{ item.type }}
+								</label>
+							</div>
+						</th>
+						<td v-html="item.description"></td>
 					</tr>
 				</tbody>
 			</table>
-			<hr>
-			<label>Tamper with requests who's URL matches: <input value='(.*?)' id='matchregex'> </label>
-			<br>
-			<p>Start Tamper Data?</p>
-			<button id="y" class="myButton">Yes</button>&nbsp;<button id="n" class="myButton">No, Cancel</button>
-		</center>
+		</div>
+
+		<hr>
+		<footer class="page-footer font-small blue pt-4">
+			<div class="container">
+				<div class="row">
+					<label>Tamper with requests who's URL matches: <input value='(.*?)' id='matchregex'> </label>
+				</div>
+				<div class="row">
+					<div class="col-md-auto">
+						<p>Start Tamper Data?</p>
+					</div>
+					<div class="col-md-auto">
+						<button type="button" class="btn btn-light" id="y">Yes</button>	
+					</div>
+					<div class="col-md-auto">
+						<button type="button" class="btn btn-light" id="n">No</button>
+					</div>
+				</div>
+			</div>
+			<div class="container" id="copyright">
+				<!-- Copyright -->
+				<div class="footer-copyright text-center py-3">© 2018 Copyright:
+					XXX
+				</div>
+				<!-- Copyright -->
+			</div>
+		</footer>
+
+		<script type="text/javascript" src="./vue_popup.js"></script>
 		<script src="popup.js"></script>
 	</body>
 </html>

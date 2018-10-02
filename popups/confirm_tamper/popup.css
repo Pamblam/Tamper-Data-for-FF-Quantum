@@ -1,0 +1,16 @@
+body {
+    margin: 10px;
+}
+
+footer {
+    background-color: #4fd6d6;
+}
+
+.table thead {
+    margin: 10px;
+    background-color: #4fd6d6;
+}
+
+#copyright {
+    background-color: #d5d8dc;
+}
