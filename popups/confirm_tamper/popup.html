@@ -12,6 +12,8 @@ and open the template in the editor.
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<!-- CSS -->
+		<link rel="stylesheet" href="./popup.css">
 		<!-- Vue.js -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
@@ -19,7 +21,7 @@ and open the template in the editor.
 		<div class="container" id="app">
 			<h3 class="text-center">Listen for types</h3>
 
-			<table class="table table-striped table-blue">
+			<table class="table table-striped">
 				<thead>
 					<tr>
 					<th scope="col">Type</th>
@@ -42,12 +44,33 @@ and open the template in the editor.
 			</table>
 		</div>
 
-			<hr>
-			<label>Tamper with requests who's URL matches: <input value='(.*?)' id='matchregex'> </label>
-			<br>
-			<p>Start Tamper Data?</p>
-			<button id="y" class="myButton">Yes</button>&nbsp;<button id="n" class="myButton">No, Cancel</button>
-		</center>
+		<hr>
+		<footer class="page-footer font-small blue pt-4">
+			<div class="container">
+				<div class="row">
+					<label>Tamper with requests who's URL matches: <input value='(.*?)' id='matchregex'> </label>
+				</div>
+				<div class="row">
+					<div class="col-md-auto">
+						<p>Start Tamper Data?</p>
+					</div>
+					<div class="col-md-auto">
+						<button type="button" class="btn btn-light" id="y">Yes</button>	
+					</div>
+					<div class="col-md-auto">
+						<button type="button" class="btn btn-light" id="n">No</button>
+					</div>
+				</div>
+			</div>
+			<div class="container" id="copyright">
+				<!-- Copyright -->
+				<div class="footer-copyright text-center py-3">© 2018 Copyright:
+					XXX
+				</div>
+				<!-- Copyright -->
+			</div>
+		</footer>
+
 		<script type="text/javascript" src="./vue_popup.js"></script>
 		<script src="popup.js"></script>
 	</body>
