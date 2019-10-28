@@ -88,7 +88,10 @@ function start_tamper_listener(){
 function user_confirm_tamper(tab_id){
 	return new Promise(done=>{
 		browser.windows.create({
-			url: "popups/confirm_tamper/popup.html",
+			url: "popups/confirm_tamper/popup.html?"+encodeURIComponent(JSON.stringify({
+				types: types,
+				pattern: pattern,
+			})),
 			type: "panel",
 			width: 1200,
 			height: 800,

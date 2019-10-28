@@ -24,4 +24,21 @@ function firefox57_workaround_for_blank_panel() {
 	});
 }
 
+function load_last_options() {
+	const last_options = JSON.parse(decodeURIComponent(window.location.href.split("?")[1]));
+
+	last_options.types = last_options.types.reduce((acc, value) => {
+		acc[value] = true;
+		return acc;
+	}, {});
+	if (Object.keys(last_options.types).length === 0)
+		last_options.types = { main_frame: true, xmlhttprequest: true };
+	document.querySelectorAll(".types").forEach((elem) => {
+		elem.checked = last_options.types[elem.value];
+	});
+
+	document.querySelector("#matchregex").value = last_options.pattern || "(.*?)";
+}
+
 firefox57_workaround_for_blank_panel();
+load_last_options();
