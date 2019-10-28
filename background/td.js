@@ -3,6 +3,7 @@ var isTampering = false;
 var windowopen = false;
 var types = [];
 var pattern = false;
+var tabId = browser.tabs.TAB_ID_NONE;
 
 var msgHandler = ()=>{};
 function handleMessage(msg){
@@ -68,19 +69,23 @@ function stop_tamper_listener(){
 }
 
 function start_tamper_listener(){
+	const filters = {urls: ["<all_urls>"]};
+	if (tabId !== browser.tabs.TAB_ID_NONE)
+		filters.tabId = tabId;
+
 	browser.webRequest.onBeforeSendHeaders.addListener(
 		tamper_header_listener,
-		{urls: ["<all_urls>"]},
+		filters,
 		["blocking", "requestHeaders"]
 	);
 	browser.webRequest.onBeforeRequest.addListener(
 		tamper_request_listener,
-		{urls: ["<all_urls>"]},
+		filters,
 		["blocking", "requestBody"]
 	);
 }
 
-function user_confirm_tamper(){
+function user_confirm_tamper(tab_id){
 	return new Promise(done=>{
 		browser.windows.create({
 			url: "popups/confirm_tamper/popup.html?"+encodeURIComponent(JSON.stringify({
@@ -95,6 +100,7 @@ function user_confirm_tamper(){
 			msgHandler = msg=>{
 				types = msg.types;
 				pattern = msg.pattern;
+				tabId = msg.tab ? tab_id : browser.tabs.TAB_ID_NONE;
 				browser.windows.getCurrent().then(wi=>{
 					browser.windows.remove(wi.id);
 					done(msg);
@@ -142,8 +148,8 @@ function user_modify_body(data){
 	});
 }
 
-function confirm_and_start_tamper(){
-	user_confirm_tamper().then(res=>{
+function confirm_and_start_tamper(tab_id){
+	user_confirm_tamper(tab_id).then(res=>{
 		if(res.tamper === true){
 			isTampering = true;
 			browser.browserAction.setIcon({
@@ -171,7 +177,7 @@ function stop_tampering(){
 }
 
 browser.runtime.onMessage.addListener(handleMessage);
-browser.browserAction.onClicked.addListener(()=>{
-	if(!isTampering) confirm_and_start_tamper();
+browser.browserAction.onClicked.addListener((tab)=>{
+	if(!isTampering) confirm_and_start_tamper(tab.id);
 	else stop_tampering();
 });

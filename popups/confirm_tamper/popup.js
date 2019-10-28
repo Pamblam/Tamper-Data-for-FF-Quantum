@@ -10,6 +10,7 @@ function respond(r) {
 	browser.runtime.sendMessage({
 		tamper: r,
 		types: types,
+		tab: document.getElementById("tab").checked,
 		pattern: document.getElementById("matchregex").value
 	});
 }
