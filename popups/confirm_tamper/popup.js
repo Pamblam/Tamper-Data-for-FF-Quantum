@@ -38,6 +38,7 @@ function load_last_options() {
 	});
 
 	document.querySelector("#matchregex").value = last_options.pattern || "(.*?)";
+	document.querySelector("#tab").checked = last_options.tab;
 }
 
 firefox57_workaround_for_blank_panel();

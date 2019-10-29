@@ -91,6 +91,7 @@ function user_confirm_tamper(tab_id){
 			url: "popups/confirm_tamper/popup.html?"+encodeURIComponent(JSON.stringify({
 				types: types,
 				pattern: pattern,
+				tab: tabId !== browser.tabs.TAB_ID_NONE,
 			})),
 			type: "panel",
 			width: 1200,
