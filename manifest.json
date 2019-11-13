@@ -1,10 +1,10 @@
 {
 
 	"description": "Tamper Data for FF Quantum.",
-	"manifest_version": 3,
+	"manifest_version": 2,
 	"name": "Tamper Data for FF Quantum",
 	"author": "Pamblam",
-	"version": "0.4",
+	"version": "0.5",
 	"short_name": "Tamper Data",
 	
 	"icons": {
