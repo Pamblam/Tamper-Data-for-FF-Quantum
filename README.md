@@ -8,9 +8,9 @@
 
 </p>
 
-Tamper Data no longer works in FF 57+. 
+The original Tamper Data no longer works in FF 57+. 
 
-This is a re-write that works in FF 57+, however, the webRequest API doesn't currently support changing request body paramters. There are tickets open for both [Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=1491087) and [Chrome](https://bugs.chromium.org/p/chromium/issues/detail?id=91191) so hopefully it will be resolved sooner than later, but for now this is still very useful for other things:
+This is a re-write that works in FF 57+, however, the webRequest API doesn't currently support changing request body parameters. There are tickets open for both [Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=1491087) and [Chrome](https://bugs.chromium.org/p/chromium/issues/detail?id=91191) so hopefully it will be resolved sooner than later, but for now this is still very useful for other things:
 
  - Monitoring live requests
  - Editing headers on live requests
@@ -28,7 +28,7 @@ It will automatically uninstall when you close the browser.
 
 ### Install from the Official Add-ons Page
 
-You can install from the official add-ons page here, [here](https://addons.mozilla.org/en-US/firefox/addon/tamper-data-for-ff-quantum/).
+You can install from the official add-ons page here, [here](https://addons.mozilla.org/firefox/addon/tamper-data-for-ff-quantum/).
 
 ### Usage
 
